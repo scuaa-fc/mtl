@@ -1,0 +1,565 @@
+
+
+
+
+
+ @inproceedings{yin2019enforcing, 
+ title={Enforcing geometric constraints of virtual normal for depth prediction}, 
+ author={Yin, Wei and Liu, Yifan and Shen, Chunhua and Yan, Youliang}, 
+ booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
+ pages={5684--5693}, 
+ year={2019} 
+ }
+
+ @inproceedings{yang2018lego, 
+ title={Lego: Learning edge with geometry all at once by watching videos}, 
+ author={Yang, Zhenheng and Wang, Peng and Wang, Yang and Xu, Wei and Nevatia, Ram}, 
+ booktitle={Proceedings of the IEEE conference on computer vision and pattern recognition}, 
+ pages={225--234},
+  year={2018} 
+  }
+
+@inproceedings{zamir2020robust,
+title={Robust learning through cross-task consistency},
+author={Zamir, Amir R and Sax, Alexander and Cheerla, Nikhil and Suri, Rohan and Cao, Zhangjie and Malik, Jitendra and Guibas, Leonidas J},
+booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+pages={11197--11206},
+year={2020}
+}
+  
+
+  
+@inproceedings{sfmlearner,
+ Author = {Zhou, Tinghui and Brown, Matthew and Snavely, Noah and Lowe, David G.}, 
+ Title = {Unsupervised Learning of Depth and Ego-Motion from Video}, 
+ Booktitle = {CVPR}, 
+ Year = {2017} 
+ }
+
+
+ @inproceedings{packnet, 
+ author = {Vitor Guizilini and Rares Ambrus and Sudeep Pillai and Allan Raventos and Adrien Gaidon}, 
+ title = {3D Packing for Self-Supervised Monocular Depth Estimation}, 
+ booktitle = {IEEE Conference on Computer Vision and Pattern Recognition (CVPR)}, 
+ year = {2020}
+ }
+
+
+
+
+@inproceedings{klingner2020self,
+title={Self-supervised monocular depth estimation: Solving the dynamic object problem by semantic guidance},
+author={Klingner, Marvin and Termohlen, Jan-Aike and Mikolajczyk, Jonas and Fingscheidt, Tim},
+booktitle={European Conference on Computer Vision},
+pages={582--600},
+year={2020},
+organization={Springer}
+}
+
+@article{zhang2021survey, 
+title={A survey on multi-task learning}, 
+author={Zhang, Yu and Yang, Qiang}, 
+journal={IEEE Transactions on Knowledge and Data Engineering}, 
+year={2021}, 
+publisher={IEEE}
+ }
+
+
+@inproceedings{taskonomy,
+title={Taskonomy: Disentangling task transfer learning},
+author={Zamir, Amir R and Sax, Alexander and Shen, William and Guibas, Leonidas J and Malik, Jitendra and Savarese, Silvio},
+booktitle={Proceedings of the IEEE conference on computer vision and pattern recognition},
+pages={3712--3722},
+year={2018}
+}
+
+
+
+
+@inproceedings{pal2019zero,
+title={Zero-shot task transfer},
+author={Pal, Arghya and Balasubramanian, Vineeth N},
+booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+pages={2189--2198},
+year={2019}
+}
+
+
+@inproceedings{standley2020tasks,
+title={Which tasks should be learned together in multi-task learning},
+author={Standley, Trevor and Zamir, Amir and Chen, Dawn and Guibas, Leonidas and Malik, Jitendra and Savarese, Silvio},
+booktitle={International Conference on Machine Learning},
+pages={9120--9132},
+year={2020}
+}
+
+
+
+
+@inproceedings{Atapour-Abarghouei2018,
+abstract = {Monocular depth estimation using learning-based approaches has become promising in recent years. However, most monocular depth estimators either need to rely on large quantities of ground truth depth data, which is extremely expensive and difficult to obtain, or predict disparity as an intermediary step using a secondary supervisory signal leading to blurring and other artefacts. Training a depth estimation model using pixel-perfect synthetic data can resolve most of these issues but introduces the problem of domain bias. This is the inability to apply a model trained on synthetic data to real-world scenarios. With advances in image style transfer and its connections with domain adaptation (Maximum Mean Discrepancy), we take advantage of style transfer and adversarial training to predict pixel perfect depth from a single real-world color image based on training over a large corpus of synthetic environment data. Experimental results indicate the efficacy of our approach compared to contemporary state-of-the-art techniques.},
+annote = {虚拟数据集中的迁移学习!},
+author = {Atapour-Abarghouei, Amir and Breckon, Toby P.},
+booktitle = {CVPR},
+doi = {10.1109/CVPR.2018.00296},
+file = {:F$\backslash$:/docs/Papers/Real-Time Monocular Depth Estimation using Synthetic Data with Domain Adaptation via Image Style Transfer.pdf:pdf},
+isbn = {9781538664209},
+issn = {10636919},
+pages = {2800--2810},
+title = {{Real-Time Monocular Depth Estimation Using Synthetic Data with Domain Adaptation via Image Style Transfer}},
+year = {2018}
+}
+
+
+@inproceedings{Eigen2014,
+annote = {cited by 900
+NIPS2014，第一篇CNN-based来做单目深度估计的文章。
+
+基本思想用的是一个Multi-scale的网络，这里的Multi-scale不是现在网络中Multi-scale features的做法，而是分为两个scale的网络来做DepthMap的估计，分别是Global Coarse-Scale Network和Local Fine-Scale Network。前者其实就是AlexNet，来得到一个低分辨率的Coarse的Depth Map,再用后者去refine前者的输出得到最后的refined depth map.
+
+代码：hjimce/Depth-Map-Prediction},
+author = {Eigen},
+booktitle = {NIPS},
+file = {:C$\backslash$:/Users/Administrator/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Eigen - 2014 - Depth Map Prediction from a Single Image using a Multi-Scale Deep Network.pdf:pdf},
+mendeley-groups = {supervised},
+pages = {1--9},
+title = {{Depth Map Prediction from a Single Image using a Multi-Scale Deep Network}},
+url = {https://papers.nips.cc/paper/5539-depth-map-prediction-from-a-single-image-using-a-multi-scale-deep-network.pdf},
+year = {2014}
+}
+
+
+@inproceedings{Zhou2017,
+abstract = {We present an unsupervised learning framework for the task of monocular depth and camera motion estimation from unstructured video sequences. In common with re- cent work [10, 14, 16], we use an end-to-end learning ap- proach with view synthesis as the supervisory signal. In contrast to the previous work, our method is completely un- supervised, requiring only monocular video sequences for training. Our method uses single-view depth and multi- view pose networks, with a loss based on warping nearby views to the target using the computed depth and pose. The networks are thus coupled by the loss during training, but can be applied independently at test time. Empirical eval- uation on the KITTI dataset demonstrates the effectiveness ofour approach: 1) monocular depth performs comparably with supervised methods that use either ground-truth pose or depth for training, and 2) pose estimation performs fa- vorably compared to established SLAM systems under com- parable input settings. 1.},
+annote = {https://github.com/tinghuiz/SfMLearner
+
+https://www.youtube.com/watch?v=HWu39YkGKvI
+
+
+2017 cvpr oral cited by 400
+
+},
+archivePrefix = {arXiv},
+arxivId = {arXiv:1802.05522v1},
+author = {Zhou, Tinghui and {Matthew Brown}},
+booktitle = {CVPR},
+doi = {10.1109/CVPR.2017.700},
+eprint = {arXiv:1802.05522v1},
+file = {:F$\backslash$:/docs/Papers/Unsupervised Learning of Depth and Ego-Motion from Video.pdf:pdf},
+isbn = {9781538604571},
+issn = {1063-6919},
+keywords = {SfMLearner},
+mendeley-groups = {unsupervised},
+mendeley-tags = {SfMLearner},
+title = {{Unsupervised Learning of Depth and Ego-Motion from Video}},
+year = {2017}
+}
+
+
+@article{RichCaruana1997,
+author = {Seraj, Ramtin Mehdizadeh},
+file = {:F$\backslash$:/docs/Papers/Multitask Learning.pdf:pdf},
+journal = {Machine Learning},
+keywords = {MTL,backpropagation,generalization,inductive transfer,k-nearest neighbor,kernel,multitask learning,parallel transfer,regression,supervised learning},
+mendeley-groups = {MTL},
+mendeley-tags = {MTL},
+pages = {41--75},
+title = {{Multi-task Learning}},
+volume = {28},
+year = {1997}
+}
+
+@INPROCEEDINGS{kitti2012,
+  author = {Andreas Geiger and Philip Lenz and Raquel Urtasun},
+  title = {Are we ready for Autonomous Driving? The KITTI Vision Benchmark Suite},
+  booktitle = {Conference on Computer Vision and Pattern	Recognition (CVPR)},
+  year = {2012}
+} 
+
+@inproceedings{cityscape,
+abstract = {Visual understanding of complex urban street scenes is an enabling factor for a wide range of applications. Object detection has benefited enormously from large-scale datasets, especially in the context of deep learning. For semantic urban scene understanding, however, no current dataset adequately captures the complexity of real-world urban scenes. To address this, we introduce Cityscapes, a benchmark suite and large-scale dataset to train and test approaches for pixel-level and instance-level semantic labeling. Cityscapes is comprised of a large, diverse set of stereo video sequences recorded in streets from 50 different cities. 5000 of these images have high quality pixel-level annotations; 20000 additional images have coarse annotations to enable methods that leverage large volumes of weakly-labeled data. Crucially, our effort exceeds previous attempts in terms of dataset size, annotation richness, scene variability, and complexity. Our accompanying empirical study provides an in-depth analysis of the dataset characteristics, as well as a performance evaluation of several state-of-the-art approaches based on our benchmark.},
+archivePrefix = {arXiv},
+arxivId = {arXiv:1604.01685v2},
+author = {Cordts, Marius and Omran, Mohamed and Ramos, Sebastian and Rehfeld, Timo and Enzweiler, Markus and Benenson, Rodrigo and Franke, Uwe and Roth, Stefan and Schiele, Bernt},
+booktitle = {CVPR},
+doi = {10.1109/CVPR.2016.350},
+eprint = {arXiv:1604.01685v2},
+file = {:F$\backslash$:/docs/Papers/The Cityscapes Dataset for Semantic Urban Scene Understanding.pdf:pdf},
+isbn = {9781467388504},
+issn = {10636919},
+mendeley-groups = {datasets},
+pages = {3213--3223},
+title = {{The Cityscapes Dataset for Semantic Urban Scene Understanding}},
+volume = {2016-Decem},
+year = {2016}
+}
+
+@article{Gordon2019,
+abstract = {We present a novel method for simultaneous learning of depth, egomotion, object motion, and camera intrinsics from monocular videos, using only consistency across neighboring video frames as supervision signal. Similarly to prior work, our method learns by applying differentiable warping to frames and comparing the result to adjacent ones, but it provides several improvements: We address occlusions geometrically and differentiably, directly using the depth maps as predicted during training. We introduce randomized layer normalization, a novel powerful regularizer, and we account for object motion relative to the scene. To the best of our knowledge, our work is the first to learn the camera intrinsic parameters, including lens distortion, from video in an unsupervised manner, thereby allowing us to extract accurate depth and motion from arbitrary videos of unknown origin at scale. We evaluate our results on the Cityscapes, KITTI and EuRoC datasets, establishing new state of the art on depth prediction and odometry, and demonstrate qualitatively that depth prediction can be learned from a collection of YouTube videos.},
+archivePrefix = {arXiv},
+arxivId = {1904.04998},
+author = {Gordon, Ariel and Li, Hanhan and Jonschkowski, Rico and Angelova, Anelia},
+eprint = {1904.04998},
+file = {:F$\backslash$:/docs/Papers/Depth from Videos in the Wild.pdf:pdf},
+mendeley-groups = {unsupervised},
+title = {{Depth from Videos in the Wild: Unsupervised Monocular Depth Learning from Unknown Cameras}},
+url = {http://arxiv.org/abs/1904.04998},
+year = {2019}
+}
+
+@article{Ruder2017,
+abstract = {Multi-task learning (MTL) has led to successes in many applications of machine learning, from natural language processing and speech recognition to computer vision and drug discovery. This article aims to give a general overview of MTL, particularly in deep neural networks. It introduces the two most common methods for MTL in Deep Learning, gives an overview of the literature, and discusses recent advances. In particular, it seeks to help ML practitioners apply MTL by shedding light on how MTL works and providing guidelines for choosing appropriate auxiliary tasks.},
+archivePrefix = {arXiv},
+arxivId = {1706.05098},
+author = {Ruder, Sebastian},
+eprint = {1706.05098},
+file = {:F$\backslash$:/docs/Papers/An Overview of Multi-Task Learning.pdf:pdf},
+mendeley-groups = {net,MTL},
+number = {May},
+title = {{An Overview of Multi-Task Learning in Deep Neural Networks}},
+url = {http://arxiv.org/abs/1706.05098},
+booktitle = {NIPS},
+year = {2017}
+}
+
+@inproceedings{Mayer2016,
+abstract = {Recent work has shown that optical flow estimation can be formulated as a supervised learning task and can be successfully solved with convolutional networks. Training of the so-called FlowNet was enabled by a large synthetically generated dataset. The present paper extends the concept of optical flow estimation via convolutional networks to disparity and scene flow estimation. To this end, we propose three synthetic stereo video datasets with sufficient realism, variation, and size to successfully train large networks. Our datasets are the first large-scale datasets to enable training and evaluating scene flow methods. Besides the datasets, we present a convolutional network for real-time disparity estimation that provides state-of-the-art results. By combining a flow and disparity estimation network and training it jointly, we demonstrate the first scene flow estimation with a convolutional network.},
+annote = {dispnet
+
+cited by 438},
+archivePrefix = {arXiv},
+arxivId = {1512.02134},
+author = {Mayer, Nikolaus and Ilg, Eddy and H{\"{a}}usser, Philip and Fischer, Philipp and Cremers, Daniel and Dosovitskiy, Alexey and Brox, Thomas},
+booktitle = {CVPR},
+doi = {10.1109/CVPR.2016.438},
+eprint = {1512.02134},
+file = {:C$\backslash$:/Users/Administrator/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Mayer et al. - 2016 - A Large Dataset to Train Convolutional Networks for Disparity, Optical Flow, and Scene Flow Estimation.pdf:pdf},
+mendeley-groups = {MaterCited,datasets},
+title = {{A Large Dataset to Train Convolutional Networks for Disparity, Optical Flow, and Scene Flow Estimation}},
+url = {http://arxiv.org/abs/1512.02134{\%}0Ahttp://dx.doi.org/10.1109/CVPR.2016.438},
+year = {2016}
+}
+@inproceedings{Kendall2016,
+annote = {cited by 475
+
+ICCV 2015},
+archivePrefix = {arXiv},
+arxivId = {arXiv:1505.07427v4},
+author = {Kendall, Alex and College, King},
+booktitle = {ICCV},
+eprint = {arXiv:1505.07427v4},
+file = {:F$\backslash$:/docs/Papers/PoseNet- A Convolutional Network for Real-Time 6-DOF Camera Relocalization.pdf:pdf},
+mendeley-groups = {MaterCited,slam},
+title = {{PoseNet: A Convolutional Network for Real-Time 6-DOF Camera Relocalization}},
+year = {2016}
+}
+@inproceedings{Misra2016,
+abstract = {Multi-task learning in Convolutional Networks has displayed remarkable success in the field of recognition. This success can be largely attributed to learning shared representations from multiple supervisory tasks. However, existing multi-task approaches rely on enumerating multiple network architectures specific to the tasks at hand, that do not generalize. In this paper, we propose a principled approach to learn shared representations in ConvNets using multi-task learning. Specifically, we propose a new sharing unit: "cross-stitch" unit. These units combine the activations from multiple networks and can be trained end-to-end. A network with cross-stitch units can learn an optimal combination of shared and task-specific representations. Our proposed method generalizes across multiple tasks and shows dramatically improved performance over baseline methods for categories with few training examples.},
+annote = {cited by 115},
+archivePrefix = {arXiv},
+arxivId = {arXiv:1604.03539v1},
+author = {Misra, Ishan and Shrivastava, Abhinav and Gupta, Abhinav and Hebert, Martial},
+booktitle = {CVPR},
+doi = {10.1109/CVPR.2016.433},
+eprint = {arXiv:1604.03539v1},
+file = {:F$\backslash$:/docs/Papers/Cross-stitch networks for multi-task learning.pdf:pdf},
+isbn = {9781467388504},
+issn = {10636919},
+mendeley-groups = {MTL},
+pages = {3994--4003},
+title = {{Cross-Stitch Networks for Multi-task Learning}},
+volume = {2016-Decem},
+year = {2016}
+}
+
+@book{gaoxiang2017,
+title = {视觉SLAM十四讲--从理论到实践},
+author = {高翔, 张涛},
+publisher = {电子工业出版社},
+year = {2017}
+
+
+}
+@inproceedings{Ren2016,
+author = {Ren, Zhe and Yan, Junchi and Ni, Bingbing and Liu, Bin and Yang, Xiaokang and Zha, Hongyuan},
+booktitle = {AAAI},
+file = {:F$\backslash$:/docs/Papers/Unsupervised deep learning for optical flow estimation..pdf:pdf},
+keywords = {Machine Learning Applications},
+mendeley-groups = {optical flow},
+title = {{Unsupervised Deep Learning for Optical Flow Estimation}},
+year = {2016}
+}
+
+@inproceedings{Jason2016,
+archivePrefix = {arXiv},
+arxivId = {arXiv:1608.05842v1},
+author = {Yu, Jason J and Harley, Adam W and Derpanis, Konstantinos G},
+eprint = {arXiv:1608.05842v1},
+file = {:F$\backslash$:/docs/Papers/Back to Basics- Unsupervised Learning of Optical Flow via Brightness.pdf:pdf},
+mendeley-groups = {optical flow},
+title = {{Back to Basics : Unsupervised Learning of Optical Flow via Brightness Constancy and Motion Smoothness}},
+year = {2016}
+}
+
+
+
+@inproceedings{Max2015,
+abstract = {We integrate the recently proposed spatial transformer network (SPN) [Jaderberg et. al 2015] into a recurrent neural network (RNN) to form an RNN-SPN model. We use the RNN-SPN to classify digits in cluttered MNIST sequences. The proposed model achieves a single digit error of 1.5{\%} compared to 2.9{\%} for a convolutional networks and 2.0{\%} for convolutional networks with SPN layers. The SPN outputs a zoomed, rotated and skewed version of the input image. We investigate different down-sampling factors (ratio of pixel in input and output) for the SPN and show that the RNN-SPN model is able to down-sample the input images without deteriorating performance. The down-sampling in RNN-SPN can be thought of as adaptive down-sampling that minimizes the information loss in the regions of interest. We attribute the superior performance of the RNN-SPN to the fact that it can attend to a sequence of regions of interest.},
+archivePrefix = {arXiv},
+arxivId = {1509.05329},
+author = {Bishop, Charles A},
+booktitle = {NIPS},
+doi = {10.1038/nbt.3343},
+eprint = {1509.05329},
+file = {:F$\backslash$:/docs/Papers/5854-spatial-transformer-networks.pdf:pdf},
+isbn = {9781627480031},
+issn = {1087-0156},
+keywords = {Algonquian,history},
+mendeley-groups = {MaterCited},
+pmid = {26571099},
+title = {{Spatial Transformer Networks}},
+year = {2015}
+}
+
+@inproceedings{fischer2015flownet,
+archivePrefix = {arXiv},
+arxivId = {arXiv:1504.06852v2},
+author = {Fischer, Philipp and Ilg, Eddy and Philip, H and Hazırbas, Caner and Smagt, Patrick Van Der and Cremers, Daniel and Brox, Thomas},
+booktitle = {ICCV},
+eprint = {arXiv:1504.06852v2},
+file = {:F$\backslash$:/docs/Papers/FlowNet-Learning Optical Flow with Convolutional Networks.pdf:pdf},
+keywords = {flow},
+mendeley-tags = {flow},
+title = {{FlowNet: Learning Optical Flow with Convolutional Networks}},
+year = {2015}
+}
+@inproceedings{Zou2018dfnet,
+abstract = {We present an unsupervised learning framework for simultaneously training single-view depth prediction and optical flow estimation models using unlabeled video sequences. Existing unsupervised methods often exploit brightness constancy and spatial smoothness priors to train depth or flow models. In this paper, we propose to leverage geometric consistency as additional supervisory signals. Our core idea is that for rigid regions we can use the predicted scene depth and camera motion to synthesize 2D optical flow by backprojecting the induced 3D scene flow. The discrepancy between the rigid flow (from depth prediction and camera motion) and the estimated flow (from optical flow model) allows us to impose a cross-task consistency loss. While all the networks are jointly optimized during training, they can be applied independently at test time. Extensive experiments demonstrate that our depth and flow models compare favorably with state-of-the-art unsupervised methods.},
+annote = {cited by 24
+2018 eccv
+tensorflow implimentation
+http://yuliang.vision/DF-Net/},
+
+archivePrefix = {arXiv},
+arxivId = {arXiv:1809.01649v1},
+author = {Zou, Yuliang and Luo, Zelun and Huang, Jia Bin},
+booktitle = {ECCV},
+doi = {10.1007/978-3-030-01228-1_3},
+eprint = {arXiv:1809.01649v1},
+file = {:F$\backslash$:/docs/Papers/DF-Net- Unsupervised Joint Learning of.pdf:pdf},
+isbn = {9783030012274},
+issn = {16113349},
+keywords = {depth,flow,motion},
+mendeley-groups = {unsupervised,optical flow},
+mendeley-tags = {flow,depth,motion},
+title = {{DF-Net: Unsupervised Joint Learning of Depth and Flow Using Cross-Task Consistency}},
+year = {2018}
+}
+
+
+
+
+@inproceedings{Liu2019selflow,
+abstract = {We present a self-supervised learning approach for optical flow. Our method distills reliable flow estimations from non-occluded pixels, and uses these predictions as ground truth to learn optical flow for hallucinated occlusions. We further design a simple CNN to utilize temporal information from multiple frames for better flow estimation. These two principles lead to an approach that yields the best performance for unsupervised optical flow learning on the challenging benchmarks including MPI Sintel, KITTI 2012 and 2015. More notably, our self-supervised pre-trained model provides an excellent initialization for supervised fine-tuning. Our fine-tuned models achieve state-of-the-art results on all three datasets. At the time of writing, we achieve EPE=4.26 on the Sintel benchmark, outperforming all submitted methods.},
+archivePrefix = {arXiv},
+arxivId = {1904.09117},
+author = {Liu, Pengpeng and Lyu, Michael and King, Irwin and Xu, Jia},
+eprint = {1904.09117},
+file = {:F$\backslash$:/docs/Papers/SelFlow-Self-Supervised Learning of Optical Flow.pdf:pdf},
+mendeley-groups = {optical flow},
+title = {{SelFlow: Self-Supervised Learning of Optical Flow}},
+url = {http://arxiv.org/abs/1904.09117},
+year = {2019}
+}
+
+
+@inproceedings{nyudepth,
+  author    = {Nathan Silberman, Derek Hoiem, Pushmeet Kohli and Rob Fergus},
+  title     = {Indoor Segmentation and Support Inference from RGBD Images},
+  booktitle = {ECCV},
+  year      = {2012}
+}
+
+@inproceedings{Eigen2015,
+archivePrefix = {arXiv},
+arxivId = {arXiv:1411.4734v4},
+author = {Eigen, David and Fergus, Rob},
+booktitle = {ICCV},
+doi = {10.1109/ICCV.2015.304},
+eprint = {arXiv:1411.4734v4},
+file = {:F$\backslash$:/docs/Papers/Predicting Depth, Surface Normals and Semantic Labels.pdf:pdf},
+isbn = {9781467383912},
+issn = {15505499},
+mendeley-groups = {supervised},
+title = {{Predicting depth, surface normals and semantic labels with a common multi-scale convolutional architecture}},
+url = {https://link.zhihu.com/?target=https{\%}3A//arxiv.org/pdf/1411.4734.pdf},
+year = {2015}
+}
+
+@inproceedings{youtube8m,
+abstract = {Many recent advancements in Computer Vision are attributed to large datasets. Open-source software packages for Machine Learning and inexpensive commodity hardware have reduced the barrier of entry for exploring novel approaches at scale. It is possible to train models over millions of examples within a few days. Although large-scale datasets exist for image understanding, such as ImageNet, there are no comparable size video classification datasets. In this paper, we introduce YouTube-8M, the largest multi-label video classification dataset, composed of {\~{}}8 million videos (500K hours of video), annotated with a vocabulary of 4800 visual entities. To get the videos and their labels, we used a YouTube video annotation system, which labels videos with their main topics. While the labels are machine-generated, they have high-precision and are derived from a variety of human-based signals including metadata and query click signals. We filtered the video labels (Knowledge Graph entities) using both automated and manual curation strategies, including asking human raters if the labels are visually recognizable. Then, we decoded each video at one-frame-per-second, and used a Deep CNN pre-trained on ImageNet to extract the hidden representation immediately prior to the classification layer. Finally, we compressed the frame features and make both the features and video-level labels available for download. We trained various (modest) classification models on the dataset, evaluated them using popular evaluation metrics, and report them as baselines. Despite the size of the dataset, some of our models train to convergence in less than a day on a single machine using TensorFlow. We plan to release code for training a TensorFlow model and for computing metrics.},
+archivePrefix = {arXiv},
+arxivId = {1609.08675},
+author = {Abu-El-Haija, Sami and Kothari, Nisarg and Lee, Joonseok and Natsev, Paul and Toderici, George and Varadarajan, Balakrishnan and Vijayanarasimhan, Sudheendra},
+eprint = {1609.08675},
+file = {:F$\backslash$:/docs/Papers/YouTube-8M.pdf:pdf},
+mendeley-groups = {datasets},
+title = {{YouTube-8M: A Large-Scale Video Classification Benchmark}},
+url = {http://arxiv.org/abs/1609.08675},
+year = {2016}
+}
+
+
+
+@inproceedings{Godard2019monodepth2,
+abstract = {Per-pixel ground-truth depth data is challenging to acquire at scale. To overcome this limitation, self-supervised learning has emerged as a promising alternative for training models to perform monocular depth estimation. In this paper, we propose a set of improvements, which together result in both quantitatively and qualitatively improved depth maps compared to competing self-supervised methods. Research on self-supervised monocular training usually explores increasingly complex architectures, loss functions, and image formation models, all of which have recently helped to close the gap with fully-supervised methods. We show that a surprisingly simple model, and associated design choices, lead to superior predictions. In particular, we propose (i) a minimum reprojection loss, designed to robustly handle occlusions, (ii) a full-resolution multi-scale sampling method that reduces visual artifacts, and (iii) an auto-masking loss to ignore training pixels that violate camera motion assumptions. We demonstrate the effectiveness of each component in isolation, and show high quality, state-of-the-art results on the KITTI benchmark.},
+annote = {monodepth2
+
+http://www.github.com/nianticlabs/monodepth2
+
+},
+archivePrefix = {arXiv},
+arxivId = {1806.01260},
+author = {Godard, Cl{\'{e}}ment and {Mac Aodha}, Oisin and Firman, Michael and Brostow, Gabriel},
+booktitle = {CVPR},
+eprint = {1806.01260},
+file = {:F$\backslash$:/docs/Papers/Digging Into Self-Supervised Monocular Depth Estimation.pdf:pdf},
+mendeley-groups = {unsupervised},
+title = {{Digging Into Self-Supervised Monocular Depth Estimation}},
+url = {http://arxiv.org/abs/1806.01260},
+year = {2019}
+}
+
+@inproceedings{MDLi18,
+  	title={MegaDepth: Learning Single-View Depth Prediction from Internet Photos},
+  	author={Zhengqi Li and Noah Snavely},
+  	booktitle={Computer Vision and Pattern Recognition (CVPR)},
+  	year={2018}
+}
+@inproceedings{alex2012,
+abstract = {We trained a large, deep convolutional neural network to classify the 1.2 million high-resolution images in the ImageNet LSRVRC-2010 contest into the 1000 different classes. On the test data, we achieved top-1 and top-5 error rates of 37.5{\%} and 17.0{\%} which is considerably better than the previous state of the art. The neural network, which has 60 million paramters and 650,000 neurons, consists of five convolutional layers, some of which are followed by max-pooling layers, and three fully connected layers with a final 1000-way softmax. To make training faster, we used non-saturating neurons and a very efficient GPU implementation of the convolutional operation. To reduce overfitting in the fully-connected layers, we employed a recently-developed method called 'dropout' that proved to be effective. We also entered a variant of the model in the ILSVRC-2012 competition and achievd a top-5 test error rate of 15.3{\%}, compared to 26.2{\%} achieved by the second-best entry.},
+archivePrefix = {arXiv},
+arxivId = {1102.0183},
+author = {Krizhevsky, Alex and Sutskever, Ilya and Hinton, Geoffrey E},
+booktitle = {NIPS},
+doi = {http://dx.doi.org/10.1016/j.protcy.2014.09.007},
+eprint = {1102.0183},
+file = {:F$\backslash$:/docs/Papers/ipapers/imagenet-classification-with-deep-convolutional-neural-networks.pdf:pdf},
+isbn = {9781627480031},
+issn = {10495258},
+mendeley-groups = {Classic},
+pmid = {7491034},
+shorttitle = {2012AlexNet},
+title = {{ImageNet Classification with Deep Convolutional Neural Networks}},
+year = {2012}
+}
+@article{Burri25012016,
+author = {Burri, Michael and Nikolic, Janosch and Gohl, Pascal and Schneider, Thomas and Rehder, Joern and Omari, Sammy and Achtelik, Markus W and Siegwart, Roland}, 
+title = {The EuRoC micro aerial vehicle datasets},
+year = {2016}, 
+doi = {10.1177/0278364915620033}, 
+URL = {http://ijr.sagepub.com/content/early/2016/01/21/0278364915620033.abstract}, 
+eprint = {http://ijr.sagepub.com/content/early/2016/01/21/0278364915620033.full.pdf+html}, 
+journal = {The International Journal of Robotics Research} 
+}
+
+@inproceedings{monodepth,
+abstract = {Learning based methods have shown very promising results for the task of depth estimation in single images. However, most existing approaches treat depth prediction as a supervised regression problem and as a result, require vast quantities of corresponding ground truth depth data for training. Just recording quality depth data in a range of environments is a challenging problem. In this paper, we innovate beyond existing approaches, replacing the use of explicit depth data during training with easier-to-obtain binocular stereo footage. We propose a novel training objective that enables our convolutional neural network to learn to perform single image depth estimation, despite the absence of ground truth depth data. Exploiting epipolar geometry constraints, we generate disparity images by training our network with an image reconstruction loss. We show that solving for image reconstruction alone results in poor quality depth images. To overcome this problem, we propose a novel training loss that enforces consistency between the disparities produced relative to both the left and right images, leading to improved performance and robustness compared to existing approaches. Our method produces state of the art results for monocular depth estimation on the KITTI driving dataset, even outperforming supervised methods that have been trained with ground truth depth.},
+annote = {多目训练集。单目测试集
+
+代码开源
+https://github.com/mrharicot/monodepth
+
+tf
+
+cited by 356},
+archivePrefix = {arXiv},
+arxivId = {arXiv:1609.03677v3},
+author = {Godard, Cl{\'{e}}ment and {Mac Aodha}, Oisin and Brostow, Gabriel J.},
+doi = {10.1109/CVPR.2017.699},
+eprint = {arXiv:1609.03677v3},
+file = {:F$\backslash$:/docs/Papers/Unsupervised Monocular Depth Estimation with Left-Right Consistency.pdf:pdf},
+isbn = {9781538604571},
+mendeley-groups = {unsupervised},
+title = {{Unsupervised monocular depth estimation with left-right consistency}},
+url = {https://arxiv.org/pdf/1609.03677.pdf},
+year = {2017}
+}
+
+@inproceedings{Yin2018geonet,
+abstract = {We propose GeoNet, a jointly unsupervised learning framework for monocular depth, optical flow and ego-motion estimation from videos. The three components are coupled by the nature of 3D scene geometry, jointly learned by our framework in an end-to-end manner. Specifically, geometric relationships are extracted over the predictions of individual modules and then combined as an image reconstruction loss, reasoning about static and dynamic scene parts separately. Furthermore, we propose an adaptive geometric consistency loss to increase robustness towards outliers and non-Lambertian regions, which resolves occlusions and texture ambiguities effectively. Experimentation on the KITTI driving dataset reveals that our scheme achieves state-of-the-art results in all of the three tasks, performing better than previously unsupervised methods and comparably with supervised ones.},
+annote = {cited by 70+
+https://github.com/yzcjtr/GeoNet
+},
+archivePrefix = {arXiv},
+arxivId = {1803.02276},
+author = {Yin, Zhichao and Shi, Jianping},
+booktitle = {CVPR},
+doi = {10.1109/CVPR.2018.00212},
+eprint = {1803.02276},
+file = {:F$\backslash$:/docs/Papers/GeoNet- Unsupervised Learning of Dense Depth, Optical Flow and Camera Pose.pdf:pdf},
+isbn = {9781538664209},
+issn = {10636919},
+keywords = {MTL,flow,pose},
+mendeley-groups = {unsupervised,MTL},
+mendeley-tags = {flow,pose,MTL},
+title = {{GeoNet: Unsupervised Learning of Dense Depth, Optical Flow and Camera Pose}},
+year = {2018}
+}
+
+@inproceedings{Ranjian2019cc,
+annote = {cited by 17
+
+作者代码功底可以, 而且深度借鉴Pinard的SfMLearner},
+archivePrefix = {arXiv},
+arxivId = {arXiv:1805.09806v3},
+author = {Flow, Optical and Segmentation, Motion},
+booktitle = {CVPR},
+eprint = {arXiv:1805.09806v3},
+file = {:F$\backslash$:/docs/Papers/Competitive Collaboration- Joint Unsupervised Learning of Depth, Camera.pdf:pdf},
+keywords = {dl,flow,motion,mtl,net,seg},
+mendeley-groups = {net,MTL,unsupervised},
+mendeley-tags = {dl,flow,motion,mtl,net,seg},
+title = {{Competitive Collaboration: Joint Unsupervised Learning of Depth, Camera Motion, Optical Flow and Motion Segmentation}},
+year = {2019}
+}
+@inproceedings{Sun2018pwcnet,
+abstract = {We present a compact but effective CNN model for optical flow, called PWC-Net. PWC-Net has been designed according to simple and well-established principles: pyramidal processing, warping, and the use of a cost volume. Cast in a learnable feature pyramid, PWC-Net uses the cur- rent optical flow estimate to warp the CNN features of the second image. It then uses the warped features and features of the first image to construct a cost volume, which is processed by a CNN to estimate the optical flow. PWC-Net is 17 times smaller in size and easier to train than the recent FlowNet2 model. Moreover, it outperforms all published optical flow methods on the MPI Sintel final pass and KITTI 2015 benchmarks, running at about 35 fps on Sintel resolution (1024x436) images. Our models are available on https://github.com/NVlabs/PWC-Net.},
+archivePrefix = {arXiv},
+arxivId = {arXiv:1709.02371v3},
+author = {Sun, Deqing and Yang, Xiaodong and Liu, Ming Yu and Kautz, Jan},
+booktitle = {CVPR},
+doi = {10.1109/CVPR.2018.00931},
+eprint = {arXiv:1709.02371v3},
+file = {:F$\backslash$:/docs/Papers/PWC-Net CNNs for Optical Flow Using Pyramid, Warping, and Cost Volume.pdf:pdf},
+isbn = {9781538664209},
+issn = {10636919},
+keywords = {flow,unsupervised},
+mendeley-groups = {optical flow},
+mendeley-tags = {flow,unsupervised},
+pages = {8934--8943},
+title = {{PWC-Net: CNNs for Optical Flow Using Pyramid, Warping, and Cost Volume}},
+volume = {D},
+year = {2018}
+}
+@inproceedings{Butler2012,
+abstract = {Ground truth optical flow is difficult to measure in real scenes with natural motion. As a result, optical flow data sets are restricted in terms of size, complexity, and diversity, making optical flow algorithms difficult to train and test on realistic ...},
+annote = {cited by 800
+eccv 2012},
+author = {Butler, Daniel J. and Wulff, Jonas and Stanley, Garrett B. and Black, Michael J.},
+booktitle = {ECCV},
+doi = {10.1007/978-3-642-33783-3_44},
+file = {:F$\backslash$:/docs/Papers/A Naturalistic Open Source Movie.pdf.pdf:pdf},
+isbn = {9783642337826},
+issn = {03029743},
+keywords = {dataset,flow},
+mendeley-groups = {optical flow,unsupervised,MaterCited},
+mendeley-tags = {dataset,flow},
+number = {PART 6},
+pages = {611--625},
+title = {{A naturalistic open source movie for optical flow evaluation}},
+volume = {7577 LNCS},
+year = {2012}
+}
+
+

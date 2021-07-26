@@ -1,0 +1,71 @@
+%discussion
+
+
+
+\section{讨论}
+\label{sec:discussion}
+包括自己的理解和一些未来打算的工作.
+\paragraph{多任务}
+
+自动驾驶领域内有几个特点需要和航空器区分, 由于视场会经常出现较大的面向摄像机的可移动景物, 这会使得景物光流估计较为困难, 所以会入分割方法来促进提升效果. 
+
+但与自动驾驶场景不同的是, 而在非城市区域, 航空器视野内应该不存在较大的可动态景物(比如kitti中移动的汽车), 而且相机的视锥可能会相对于地面而改变, 所以在方法上应该对这种场景做特殊考虑.
+
+由于深度估计的高病态性, 多数监督信号都是从其他任务联合来获取, 其中光流为重中之重. 不但相机的自运动可以由背景光流来表征, 而且在深度估计中遇到的诸如遮挡等问题在光流任务中研究也比较成熟, 非常值得结合来一起解决. 
+
+
+\paragraph{训练与推断}
+
+航空器深度估计中, 同一种方法在不同高度不同环境下的结果都会区别很大, 所以在训练集上应该尽量含括不同高度的情况, 在场景上也尽可能靠近使用场景.
+
+在训练过程中, 由于问题的病态性, 所采用的的模型无一例外都是使用图像序列做训练集, 使用的序列长度与送入子网络的顺序是各个方法的主要的不同之处.
+
+目前所有的模型用到的都是单目单帧图像推断, 但\cite{Zhou2017}在位姿估计的过程中也是使用了图像序列进行位姿估计,用于参考的临近帧可设置为前后一帧到前后n帧; 另外, ~\cite{Sun2018pwcnet}单在光流估计上已经有模型开始使用多帧输入来增强一致性约束, 可以将模型设计为单目图像序列深度估计, 以此增加约束来提升效果. 
+
+
+\paragraph{数据集}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.9\linewidth]{other/dataset_logic.jpg}
+	% \vspace{\figcapmargin}
+	\caption{整体系统示意. 与视频匹配的ground truth即为视野内场景3d信息,由于Minecraft场景都是由方块拼接而成, 所以如果知道场景方块的id,联系场景地图.obj文件,就能得到方块的坐标, 从而转换成深度信息.}
+	\label{fig:dataset}
+\end{figure}
+
+在数据集上, 自动驾驶领域最常用的kitti可以满足大多数场景理解任务,包括深度估计,光流估计,运动估计,跟踪,分割等, 但在航空器中, 由于难以获得ground truth, 故没有合适的, 如果有一个航空器视角的带标签数据集将会对问题的解决带来极大提升. 模拟数据集在这里是一个很好的方向, 而且也已经出现了一部分以开源电影为基础的3d数据集如\cite{Butler2012}, 但是其制作的成本和精力仍然有些不切实际, 而且适用性比较窄.
+
+Minecraft\footnote{\url{https://www.minecraft.net/zh-hans/}}是一款著名的沙盒游戏(sandbox game), 在游戏的创作模式中, 可以完美还原包括无人机视角,自动驾驶视角, 并还能准确输出摄像机的速度, 位姿等重要变量\ref{fig:minecraft}, 同时摄像机的视场角等变量也可以随意调节, 而且, 游戏可以载入自己编写module来实现一些复杂的功能, 比如设计在城市马路中运动的人流,车流并提供精确的ground truth用来光流训练, 或者输出飞行第一视角视频并实时提供摄像机姿态和场景深度信息. 粗略的框图如\ref{fig:dataset}所示. 最重要的是, 该游戏社区活跃且庞大, 能提供的场景地图,module等资源巨大, 能大幅减少人力.
+
+
+\begin{figure}[htbp]
+	\centering
+	
+	\subfigure[]{
+		%\begin{minipage}[t]{0.25\linewidth}
+		\centering
+		\includegraphics[width=0.8\linewidth]{other/beio}
+		%\caption{fig1}
+		%	\end{minipage}
+	}%
+	
+	\subfigure[]{
+		%	\begin{minipage}[t]{0.25\linewidth}
+		\centering
+		\includegraphics[width=0.8\linewidth]{other/city}
+		%\caption{fig2}
+		%	\end{minipage}%
+	}%
+	%这个回车键很重要 \quad也可以
+	\label{fig:minecraft}
+	\caption{两个模拟场景的示意图,可以在飞行过程中实时输出位姿等变量}
+	
+\end{figure}
+
+
+
+
+
+\paragraph{总结}
+
+本文主要讨论了近年来在无监督单目训练深度估计上的一系列工作进展.并根据发展趋势, 将章节分为多任务学习理论,引入运动估计的方法, 引入光流估计的方法, 引入分割的方法几个部分进行归纳, 最后讨论了下在航空器领域应用下可能的改进方法.
