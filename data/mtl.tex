@@ -35,7 +35,7 @@ iii)任务梯度可能会产生干扰，多个总和损失可能会使优化环�
 	\subfigure[深度网络中的硬参数共享]{
 		%\begin{minipage}[t]{0.25\linewidth}
 		\centering
-		\includegraphics[width=0.7\linewidth]{other/mtl_hard}
+		\includegraphics[width=0.7\linewidth]{fig/mtl_hard}
 		%\caption{fig1}
 		%	\end{minipage}
 	}%
@@ -43,7 +43,7 @@ iii)任务梯度可能会产生干扰，多个总和损失可能会使优化环�
 	\subfigure[深度网络中的软参数共享]{
 		%	\begin{minipage}[t]{0.25\linewidth}
 		\centering
-		\includegraphics[width=1\linewidth]{other/mtl_sorft}
+		\includegraphics[width=1\linewidth]{fig/mtl_sorft}
 		%\caption{fig2}
 		%	\end{minipage}%
 	}%
@@ -61,7 +61,7 @@ iii)任务梯度可能会产生干扰，多个总和损失可能会使优化环�
 \begin{figure}[htbp]
 	% caption放上面就会显示在图的上方，出现在下面就是出现在图的下方
 	\begin{center}
-		\includegraphics[width=1.0\linewidth]{other/cross-stitch_networks}
+		\includegraphics[width=1.0\linewidth]{fig/cross-stitch_networks}
 		\caption{使用 cross-stitch units 的两个AlexNet \cite{alex2012}. 在这种情况下，作者仅在pooling层和全连接的图层之后才用cross-stitch units， 其可以将共享表示建模为输入激活图的线性组合。 该网络尝试学习可以帮助完成任务A和B的表示。我们将从任务A直接监督的子网称为网络A(上), 另一个称为网络B(下)}
 		\label{fig:cross-stitch}%label放在caption下面貌似才得行，要不然有问
 	\end{center}
