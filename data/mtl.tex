@@ -24,7 +24,7 @@ iii)任务梯度可能会产生干扰，多个总和损失可能会使优化环�
 多任务关系（task relationship）让人自然而然的考虑到迁移关系（transfer relationship），但两者之间并没有很明显的相关性\cite{zhang2021survey}.
 
 \subsection{基于理论的多任务学习分类}
-在深度学习中, 基于参数的共享方法下，多任务学习可以被分成两类, 硬参数共享(hard parameter sharing)与软参数共享(soft parameter sharing)\cite{Ruder2017}, 硬参数共享的多任务会通过一个相同Encoder, 然后根据各自任务使用不同的Decoder; 软参数共享没用公共的层, 但是在不同任务的架构上会有跳跃连接来实现特征传输;
+在深度学习中, 以参数的共享方法分类，多任务学习可以被分成两类, 硬参数共享(hard parameter sharing)与软参数共享(soft parameter sharing)\cite{Ruder2017}, 硬参数共享的多任务会通过一个相同Encoder, 然后根据各自任务使用不同的Decoder; 软参数共享没用公共的层, 但是在不同任务的架构上会有跳跃连接来实现特征传输;
 
 
 
@@ -73,20 +73,40 @@ iii)任务梯度可能会产生干扰，多个总和损失可能会使优化环�
 
 
 \subsection{视觉任务下多任务学习分类}
-在应用中，多任务可以分成两个分支，分别是以场景感知为主，模型多数为密集估计（Dense Prediction）的多任务集合，以及以场景监测为主，模型多数为稀疏估计的多任务集合。
+多任务学习中的任务，在不同的情况下意义不同，有时是代表不同尺度或者视觉层次的相同任务\cite{kokkinos2017ubernet}，有时是代表一个视觉任务的不同阶段\cite{zhang2016joint}，有时也代表不同种类的视觉任务\cite{Ranjian2019cc}。
+本文根据应用，将多任务分成两个分支，分别是以场景感知为主，模型多数为密集估计（Dense Prediction）的多任务集合，以及以场景监测为主，模型多数为稀疏估计的多任务集合。
 
-在场景感知类任务集中，重点处理对象为场景的背景，涉及任务包括深度估计\cite{Eigen2014,Eigen2015}，场景表面法向估计\cite{yin2019enforcing}，边缘检测\cite{yang2018lego}，光流估计\cite{fischer2015flownet,Yin2018geonet,Zou2018dfnet}，语义分割\cite{Ranjian2019cc,klingner2020self}，视觉里程计\cite{sfmlearner},自运动速度检估计\cite{packnet}任务。
+\subsubsection{场景感知类任务集}
+
+在场景感知类任务集中，重点处理对象为场景的背景，即全局性感知，涉及任务包括深度估计\cite{Eigen2014,Eigen2015}，场景表面法向估计\cite{yin2019enforcing}，边缘检测\cite{yang2018lego}，光流估计\cite{fischer2015flownet,Yin2018geonet,Zou2018dfnet}，语义分割\cite{Ranjian2019cc,klingner2020self}，视觉里程计\cite{sfmlearner},自运动速度检估计\cite{packnet}任务, 图.\ref{fig:sfmlearner} 和图.\ref{fig:cc}分别是两个任务以及四个任务下的多任务学习框架，可以看到每个子任务通过几何关系偶合在一起，并企图提升各自任务的效果。
 
 此类任务的一个特点就是数据难以标注，人工处理困难极大等。
 例如, 光流任务是要估计出图像中每个像素的移动, 并通过色彩映射标注出来, 以此估计相对相机视角下每个点的运动状况,但此种任务无法直接标注.
 此类任务的另一个特点就是耦合关系较强,各个任务之间的层次性较弱. 
 文献\cite{taskonomy,standley2020tasks}主要介绍了此类任务集的耦合关系, 并量化了两两任务之间的关联度, 并且还在\cite{zamir2020robust}中基于前面的工作提出了如何鲁棒学习的策略，使得模型的泛化能力更好。
 
+\begin{figure}[htbp]
+	\begin{center}
+		\includegraphics[width=1.0\linewidth]{fig/sfmlearner.pdf}
+		\caption{基于深度估计任务与相机自运动位姿变换两个任务下的框图\cite{sfmlearner}}
+		\label{fig:sfmlearner}%label放在caption下面貌似才得行，要不然有问
+	\end{center}
+\end{figure}
+
+
+\begin{figure}[htbp]
+	\begin{center}
+		\includegraphics[width=1.0\linewidth]{fig/cc}
+		\caption{包含了深度估计，位姿变换，分割以及光流估计四个任务的框图\cite{Ranjian2019cc}}
+		\label{fig:cc}%label放在caption下面貌似才得行，要不然有问
+	\end{center}
+\end{figure}
 
 以上任务多数都是基于视觉导航类的任务需求，重点在探测场景感知环境上，相机一般是运动状态，算法一般搭载在机器人上，计算资源有限，与场景监测类任务有着较大的不同。
 
+\subsubsection{场景监测类任务集}
 
-在场景监测类任务集中, 重点处理对象是场景中的物体，涉及任务包括物体检测,跟踪,运动轨迹预测,实例分割，物体位姿估计等.
+在场景监测类任务集中, 重点处理对象是场景中的物体，即局部性感知，涉及任务包括物体检测,跟踪,运动轨迹预测,实例分割，物体位姿估计等.
 该任务集中的子任务抽象程度较高, 没有明显的关系来关联, 因此相关研究较为空白.
 此类任务的特点之一就是相比于场景感知类任务的数据，标注较为容易。
 第二个特点是此类任务的关键难点，也是本文研究的重点，即任务之间的耦合性并非通过几何耦合这类数学关系体现，而是通过逻辑关系，各个任务之间的层次性较强。
@@ -99,3 +119,17 @@ iii)任务梯度可能会产生干扰，多个总和损失可能会使优化环�
 		\label{fig:tasks}%label放在caption下面貌似才得行，要不然有问
 	\end{center}
 \end{figure}
+在场景检测类视觉任务衍生出的应用级任务中，人脸检测以精度要求高，难度较大，应用前景广阔收到更大的关注。由于需要在大量人脸中准确分别，所以一些人脸检测应用中引入了更多辅助任务以增强性能。
+Zhang等人\cite{zhang2016joint}提出通过堆叠式多重网络来进行该任务，对人脸分类、锚箱回归、面部特征点定位作为三个任务，并分别通过网络各自进行任务。
+但此种方法的任务实质上是一个应用级视觉任务的不同阶段，子任务的结果无法直接拿来应用，与之前提及的任务有本质不同。
+同样是人脸识别任务，Ranjan等人\cite{ranjan2017hyperface}则零任务集中包含了人脸检测、关键点定位、人脸姿态估计以及性别识别四个子任务，效果如图.\ref{fig:hyper-face}
+
+
+\begin{figure}[htbp]
+	\begin{center}
+		\includegraphics[width=1.0\linewidth]{fig/hyperface.png}
+		\caption{HyperFace效果展示，可见程序的结果包含人脸检测（框出）、脸部关键点定位（绿点）、性别识别（红蓝色框）以及姿态估计（俯仰偏转翻滚角度）。}
+		\label{fig:hyper-face}%label放在caption下面貌似才得行，要不然有问
+	\end{center}
+\end{figure}
+
