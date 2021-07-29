@@ -1,82 +1,11 @@
-%mtl
 
 
 
-\section{多任务学习}
-
-
-%definition
-多任务学习(Multi-Task Learning) 也称为联合学习(Joint Learning), 交叉学习（cross-task） 是一种归纳传输方法，通过将相关任务的训练信号中包含的域信息用作归纳偏差来改进泛化。它通过在使用共享表示的同时并行学习任务来实现这一点;每项任务的学习内容可以帮助更好地学习其他任务\cite{RichCaruana1997}。
-
-%必要性
-多任务学习通过的必要性有很多，例如：
-i) 推断时，计算资源有限设备中，通过共享参数能减少推断时间
-ii) 训练时，多任务共同学习相比依次训练更节约时间。
-iii) 评估时，通过多任务学习理论上能提升模型的评估精度，以及泛化能力。
-iv) 对数据的利用更为高效。
-%遇到的问题
-然而，多任务学习也面临着许多挑战，包括但不限于
-i)多任务协同训练下，不同的任务需要有不同的学习率或者学习计划(learning schedule).
-ii)优化过程中某一个任务的变优也许会使得其他任务表现变差。 
-iii)任务梯度可能会产生干扰，多个总和损失可能会使优化环境更加困难。
-
-
-多任务关系（task relationship）让人自然而然的考虑到迁移关系（transfer relationship），但两者之间并没有很明显的相关性\cite{zhang2021survey}.
-
-\subsection{基于理论的多任务学习分类}
-在深度学习中, 以参数的共享方法分类，多任务学习可以被分成两类, 硬参数共享(hard parameter sharing)与软参数共享(soft parameter sharing)\cite{Ruder2017}, 硬参数共享的多任务会通过一个相同Encoder, 然后根据各自任务使用不同的Decoder; 软参数共享没用公共的层, 但是在不同任务的架构上会有跳跃连接来实现特征传输;
-
-
-
-
-\begin{figure}[htbp]
-	\centering
-	
-	\subfigure[深度网络中的硬参数共享]{
-		%\begin{minipage}[t]{0.25\linewidth}
-		\centering
-		\includegraphics[width=0.7\linewidth]{fig/mtl_hard}
-		%\caption{fig1}
-		%	\end{minipage}
-	}%
-	
-	\subfigure[深度网络中的软参数共享]{
-		%	\begin{minipage}[t]{0.25\linewidth}
-		\centering
-		\includegraphics[width=1\linewidth]{fig/mtl_sorft}
-		%\caption{fig2}
-		%	\end{minipage}%
-	}%
-	%这个回车键很重要 \quad也可以
-	\caption{硬参数共享的多任务会通过一个相同Encoder, 然后根据各自任务使用不同的Decoder; 软参数共享没用公共的层, 但是在不同任务的架构上会有跳跃连接来实现特征传输.}
-	
-\end{figure}
-
-
-
-
-在解决视觉多任务领域中, 一个比较新的工作是\cite{Misra2016}提出的十字绣网络, 该文旨在解决检测与分割任务. 文章重点在于讨论模型框架, 对两个任务并没过多介绍. 作者在两个相同结构的卷积网络的相同层之间添加十字绣单元(Cross-stitch Unit)来选择性的进行不同网络相同层之间的特征图传输.
-
-%十字绣图片 
-\begin{figure}[htbp]
-	% caption放上面就会显示在图的上方，出现在下面就是出现在图的下方
-	\begin{center}
-		\includegraphics[width=1.0\linewidth]{fig/cross-stitch_networks}
-		\caption{使用 cross-stitch units 的两个AlexNet \cite{alex2012}. 在这种情况下，作者仅在pooling层和全连接的图层之后才用cross-stitch units， 其可以将共享表示建模为输入激活图的线性组合。 该网络尝试学习可以帮助完成任务A和B的表示。我们将从任务A直接监督的子网称为网络A(上), 另一个称为网络B(下)}
-		\label{fig:cross-stitch}%label放在caption下面貌似才得行，要不然有问
-	\end{center}
-\end{figure}
-文章在消融试验上面花了较多篇幅讨论这种架构的模型面临的一些新问题, 比如十字绣单元的少量参数有着明确的约束, 需要单独学习, 学习率的设置对整体影响以及两个网络初始化问题. 此类问题多在理论层面分析和探讨多任务学习，而应用方面的，尤其是视觉方面的探讨比较少，此类问题又是工业界更为关注的，因此我们更倾向于以视觉任务为主干讨论多任务学习。
-
-
-
-
-
-\subsection{视觉任务下多任务学习分类}
+\section{多任务学习中的任务关系（基于视觉）}
 多任务学习中的任务，在不同的情况下意义不同，有时是代表不同尺度或者视觉层次的相同任务\cite{kokkinos2017ubernet}，有时是代表一个视觉任务的不同阶段\cite{zhang2016joint}，有时也代表不同种类的视觉任务\cite{Ranjian2019cc}。
 本文根据应用，将多任务分成两个分支，分别是以场景感知为主，模型多数为密集估计（Dense Prediction）的多任务集合，以及以场景监测为主，模型多数为稀疏估计的多任务集合。
 
-\subsubsection{场景感知类任务集}
+\subsection{场景感知类任务集}
 
 在场景感知类任务集中，重点处理对象为场景的背景，即全局性感知，涉及任务包括深度估计\cite{Eigen2014,Eigen2015}，场景表面法向估计\cite{yin2019enforcing}，边缘检测\cite{yang2018lego}，光流估计\cite{fischer2015flownet,Yin2018geonet,Zou2018dfnet}，语义分割\cite{Ranjian2019cc,klingner2020self}，视觉里程计\cite{sfmlearner},自运动速度检估计\cite{packnet}任务, 图.\ref{fig:sfmlearner} 和图.\ref{fig:cc}分别是两个任务以及四个任务下的多任务学习框架，可以看到每个子任务通过几何关系偶合在一起，并企图提升各自任务的效果。
 
@@ -104,7 +33,7 @@ iii)任务梯度可能会产生干扰，多个总和损失可能会使优化环�
 
 以上任务多数都是基于视觉导航类的任务需求，重点在探测场景感知环境上，相机一般是运动状态，算法一般搭载在机器人上，计算资源有限，与场景监测类任务有着较大的不同。
 
-\subsubsection{场景监测类任务集}
+\subsection{场景监测类任务集}
 
 在场景监测类任务集中, 重点处理对象是场景中的物体，即局部性感知，涉及任务包括物体检测,跟踪,运动轨迹预测,实例分割，物体位姿估计等.
 该任务集中的子任务抽象程度较高, 没有明显的关系来关联, 因此相关研究较为空白.
