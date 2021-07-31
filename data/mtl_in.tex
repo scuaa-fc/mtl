@@ -1,7 +1,7 @@
 
 
 
-\section{多任务学习中的任务关系（基于视觉）}
+\section{视觉下多任务学习中的任务关系}
 \label{sec:mtl_in}
 
 多任务学习中的任务，在不同的情况下意义不同，有时是代表不同尺度或者视觉层次的相同任务\cite{kokkinos2017ubernet}，有时是代表一个视觉任务的不同阶段\cite{zhang2016joint}，有时也代表不同种类的视觉任务\cite{Ranjian2019cc}。
@@ -9,7 +9,16 @@
 
 \subsection{场景感知类任务集}
 
-在场景感知类任务集中，重点处理对象为场景的背景，即全局性感知，涉及任务包括深度估计\cite{Eigen2014,Eigen2015}，场景表面法向估计\cite{yin2019enforcing}，边缘检测\cite{yang2018lego}，光流估计\cite{fischer2015flownet,Yin2018geonet,Zou2018dfnet}，语义分割\cite{Ranjian2019cc,klingner2020self}，视觉里程计\cite{sfmlearner},自运动速度检估计\cite{packnet}任务, 图.\ref{fig:sfmlearner} 和图.\ref{fig:cc}分别是两个任务以及四个任务下的多任务学习框架，可以看到每个子任务通过几何关系偶合在一起，并企图提升各自任务的效果。
+在场景感知类任务集中，重点处理对象为场景的背景，即全局性感知，涉及任务包括深度估计\cite{Eigen2014,Eigen2015}，场景表面法向估计\cite{yin2019enforcing}，边缘检测\cite{yang2018lego}，光流估计\cite{fischer2015flownet,Yin2018geonet,Zou2018dfnet}，语义分割\cite{Ranjian2019cc,klingner2020self}，视觉里程计\cite{sfmlearner},自运动速度检估计\cite{packnet}任务, 图.\ref{fig:sfmlearner} 和图.\ref{fig:cc}分别是两个任务以及四个任务下的多任务学习框架，可以看到每个子任务通过几何关系偶合在一起，并企图提升各自任务的效果。我们根据\cite{taskonomy}对此类任务的层次分析，并联系涉及的应用，绘制关系如图.\ref{fig:tasks-1}
+
+\begin{figure}[htbp]
+	\begin{center}
+		\includegraphics[width=1.0\linewidth]{fig/tasks-1.png}
+		\caption{场景感知类任务集任务关系\cite{taskonomy}}
+		\label{fig:tasks-1}%label放在caption下面貌似才得行，要不然有问
+	\end{center}
+\end{figure}
+
 
 此类任务的一个特点就是数据难以标注，人工处理困难极大等。
 例如, 光流任务是要估计出图像中每个像素的移动, 并通过色彩映射标注出来, 以此估计相对相机视角下每个点的运动状况,但此种任务无法直接标注.
@@ -41,19 +50,23 @@
 该任务集中的子任务抽象程度较高, 没有明显的关系来关联, 因此相关研究较为空白.
 此类任务的特点之一就是相比于场景感知类任务的数据，标注较为容易。
 第二个特点是此类任务的关键难点，也是本文研究的重点，即任务之间的耦合性并非通过几何耦合这类数学关系体现，而是通过逻辑关系，各个任务之间的层次性较强。
-因此，本文根据不同的视觉任务以及层次关系，我们将该任务集绘制如图.\ref{fig:tasks}
+因此，本文根据不同的视觉任务以及层次关系，我们将该任务集绘制如图.\ref{fig:tasks-2}
 
 \begin{figure}[htbp]
 	\begin{center}
-		\includegraphics[width=1.0\linewidth]{fig/tasks}
-		\caption{非密集估计类任务层次关系}
-		\label{fig:tasks}%label放在caption下面貌似才得行，要不然有问
+		\includegraphics[width=1.0\linewidth]{fig/tasks-2.png}
+		\caption{非密集估计类任务关系}
+		\label{fig:tasks-2}%label放在caption下面貌似才得行，要不然有问
 	\end{center}
 \end{figure}
-在场景检测类视觉任务衍生出的应用级任务中，人脸检测以精度要求高，难度较大，应用前景广阔收到更大的关注。由于需要在大量人脸中准确分别，所以一些人脸检测应用中引入了更多辅助任务以增强性能。
+
+
+
+在场景检测类视觉任务衍生出的应用中，人脸检测以精度要求高，难度较大，应用前景广阔收到更大的关注。由于需要在大量人脸中准确分别，所以一些人脸检测应用中引入了更多辅助任务以增强性能。
+
 Zhang等人\cite{zhang2016joint}提出通过堆叠式多重网络来进行该任务，对人脸分类、锚箱回归、面部特征点定位作为三个任务，并分别通过网络各自进行任务。
 但此种方法的任务实质上是一个应用级视觉任务的不同阶段，子任务的结果无法直接拿来应用，与之前提及的任务有本质不同。
-同样是人脸识别任务，Ranjan等人\cite{ranjan2017hyperface}则零任务集中包含了人脸检测、关键点定位、人脸姿态估计以及性别识别四个子任务，效果如图.\ref{fig:hyper-face}
+同样是人脸识别任务，Ranjan等\cite{ranjan2017hyperface}人以相同特征空间内提取特征并以特征提取器最后层串接多个解码器，包含了人脸检测、关键点定位、人脸姿态估计以及性别识别四个子任务，效果如图.\ref{fig:hyper-face}
 
 
 \begin{figure}[htbp]
@@ -63,4 +76,11 @@ Zhang等人\cite{zhang2016joint}提出通过堆叠式多重网络来进行该任
 		\label{fig:hyper-face}%label放在caption下面貌似才得行，要不然有问
 	\end{center}
 \end{figure}
+综上，场景监测类任务集在的应用中，现有问题有: 
+\begin{itemize}
+	\item 由于缺乏耦合关系的深层次发掘，现有集中在共用特征空间的策略上，多数是一个编码器加多个解码器的结构，解码器的输入特征均来自于同一解码器的同一层，而对不同层次的特征缺少分流重建机制。
+	\item 与场景感知类任务集基于连续可导的几何耦合关系不同，现有场景监测类任务之间暂时还没有像视图重构(View Synthesis)\cite{garg2016unsupervised,flynn2016deepstereo}这类的成熟方法。
+\end{itemize}
 
+
+因此，针对问题一，根据不同视觉层次的特征来重构目标信息实现多任务学习是一个值的尝试的方法，具体来说就是后端的特征处理结构(解码器，decoder)中应该都能输入来自于多个层次的特征处理。而针对问题二，由于估计的数据结构多数为非密集型，因此结合一定的机器学习方法耦合关系挖掘应该能更好的服务于基于视觉任务的应用，又或是联系时空维度以几何方法\cite{lin2014deep}。
